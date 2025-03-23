@@ -10,5 +10,9 @@ export default function LogoutPage() {
     logout();
   }, []);
 
-  return <h2>Logging out...</h2>;
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <h2 className="text-2xl font-bold">Logging out...</h2>
+    </div>
+  );
 }

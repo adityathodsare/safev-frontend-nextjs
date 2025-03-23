@@ -34,13 +34,19 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="flex flex-col  items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        Register
+      </h2>
+      <form
+        onSubmit={handleSubmit}
+        className="w-80 flex flex-col space-y-4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
+      >
         <input
           type="text"
           name="name"
           placeholder="Name"
+          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           onChange={handleChange}
           required
         />
@@ -48,6 +54,7 @@ export default function RegisterPage() {
           type="email"
           name="username"
           placeholder="Email"
+          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           onChange={handleChange}
           required
         />
@@ -55,6 +62,7 @@ export default function RegisterPage() {
           type="password"
           name="password"
           placeholder="Password"
+          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           onChange={handleChange}
           required
         />
@@ -62,6 +70,7 @@ export default function RegisterPage() {
           type="text"
           name="address"
           placeholder="Address"
+          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           onChange={handleChange}
           required
         />
@@ -69,11 +78,23 @@ export default function RegisterPage() {
           type="text"
           name="phoneNumber"
           placeholder="Phone Number"
+          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           onChange={handleChange}
           required
         />
-        <button type="submit">Register</button>
+        <button
+          type="submit"
+          className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+        >
+          Register
+        </button>
       </form>
+      <button
+        className="mt-4 text-blue-600 dark:text-blue-400 hover:underline"
+        onClick={() => router.push("/login")}
+      >
+        Already Registered? Login
+      </button>
     </div>
   );
 }

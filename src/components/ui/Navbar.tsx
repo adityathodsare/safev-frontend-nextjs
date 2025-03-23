@@ -36,7 +36,7 @@ function Navbar({ className }: { className?: string }) {
           <MenuItem
             setActive={setActive}
             active={active}
-            item={"contact us"}
+            item={"contactUs"}
           ></MenuItem>
         </Link>
         <Link href={"/logout"}>
