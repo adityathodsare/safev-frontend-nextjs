@@ -23,6 +23,7 @@ function Navbar({ className }: { className?: string }) {
             <HoveredLink href="/">prototype</HoveredLink>
             <HoveredLink href="/aboutus/aboutteam">about team </HoveredLink>
             <HoveredLink href="/">INFO Docs</HoveredLink>
+            <HoveredLink href="/tracking">track data</HoveredLink>
           </div>
         </MenuItem>
         <Link href={"/buy"}>
