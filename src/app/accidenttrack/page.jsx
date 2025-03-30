@@ -1,4 +1,9 @@
 "use client";
+
+//git add .
+//git commit -m "Updated code"
+//git push origin main
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {
