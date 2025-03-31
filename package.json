@@ -11,6 +11,7 @@
   "dependencies": {
     "@stomp/stompjs": "^7.1.0",
     "@tabler/icons-react": "^3.31.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "axios": "^1.8.4",
     "chart.js": "^4.4.8",
     "clsx": "^2.1.1",
@@ -22,6 +23,7 @@
     "react-dom": "^19.0.0",
     "react-element-to-jsx-string": "^17.0.0",
     "react-icons": "^5.5.0",
+    "react-syntax-highlighter": "^15.6.1",
     "recharts": "^2.15.1",
     "safe-v": "file:",
     "simplex-noise": "^4.0.3",

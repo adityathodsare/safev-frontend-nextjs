@@ -130,7 +130,7 @@ const AlcoholDetection = () => {
         {latestData &&
           [
             {
-              name: "Alcohol Level (>1400 Unsafe)",
+              name: "Alcohol Level (>2000 Unsafe)",
               value: latestData.alcoholLevel,
               unit: "ppm",
               icon: FaWineGlassAlt,
