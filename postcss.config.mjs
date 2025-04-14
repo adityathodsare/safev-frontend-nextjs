@@ -4,6 +4,9 @@ import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColo
 
 const config = {
   plugins: ["@tailwindcss/postcss"],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default config;

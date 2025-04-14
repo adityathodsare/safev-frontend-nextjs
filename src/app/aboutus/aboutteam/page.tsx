@@ -2,7 +2,6 @@
 import React from "react";
 
 import { TeamMates } from "../../../components/TeamMates";
-import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { WavyBackground } from "@/components/ui/wavy-background";
 
 function Page() {
