@@ -9,31 +9,33 @@ const people = [
     name: "kirti shelke",
     designation: "TE entc student",
     skills: "springBoot, React, NextJs, IOT",
-    image:
-      "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "/img/1.jpg",
   },
   {
     id: 2,
     name: "aditya thodsare",
     designation: "TE entc student",
     skills: "springBoot, React, NextJs, IOT",
-    image:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+    image: "/img/3.jpg",
   },
   {
     id: 3,
     name: "khushi sharma",
     designation: "TE entc student",
     skills: "springBoot, React, NextJs, IOT",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+    image: "/img/2.jpg",
   },
 ];
 
 export function TeamMates() {
   return (
-    <div className="flex flex-row items-center justify-center mb-10 w-full">
-      <AnimatedTooltip items={people} />
+    <div className="w-full px-4">
+      <div className=" text-gray-100  text-4xl font-extrabold text-center  mt-10 mb-6">
+        Team Sigma
+      </div>
+      <div className="flex flex-row items-center justify-center mb-10 w-full">
+        <AnimatedTooltip items={people} />
+      </div>
     </div>
   );
 }
