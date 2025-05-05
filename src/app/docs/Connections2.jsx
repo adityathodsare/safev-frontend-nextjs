@@ -1,109 +1,186 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Connections2 = () => {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const tableRowVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.05, duration: 0.3 },
+    }),
+  };
+
   return (
-    <div className="p-6 bg-gray-900 text-gray-200 rounded-lg shadow-lg">
-      <h1 className="text-4xl font-bold mb-6 text-green-400">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={fadeIn}
+      className="p-8 bg-gray-900/50 backdrop-blur-sm rounded-xl shadow-xl border border-gray-700"
+    >
+      <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
         🔌 Sensor & Component Pin Connections
       </h1>
 
-      <table className="w-full border-collapse border border-gray-700">
-        <thead>
-          <tr className="bg-gray-800 text-gray-300">
-            <th className="border border-gray-600 px-4 py-2">Component</th>
-            <th className="border border-gray-600 px-4 py-2">ESP32 Pin</th>
-            <th className="border border-gray-600 px-4 py-2">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="bg-gray-800">
-            <td className="border border-gray-700 px-4 py-2">
-              MQ3 (Alcohol Sensor)
-            </td>
-            <td className="border border-gray-700 px-4 py-2">GPIO 34</td>
-            <td className="border border-gray-700 px-4 py-2">
-              Detects alcohol levels
-            </td>
-          </tr>
-          <tr className="bg-gray-900">
-            <td className="border border-gray-700 px-4 py-2">
-              MQ2 (Gas Sensor)
-            </td>
-            <td className="border border-gray-700 px-4 py-2">GPIO 35</td>
-            <td className="border border-gray-700 px-4 py-2">
-              Detects gas leaks
-            </td>
-          </tr>
-          <tr className="bg-gray-800">
-            <td className="border border-gray-700 px-4 py-2">Flame Sensor</td>
-            <td className="border border-gray-700 px-4 py-2">GPIO 32</td>
-            <td className="border border-gray-700 px-4 py-2">
-              Detects fire outbreaks
-            </td>
-          </tr>
-          <tr className="bg-gray-900">
-            <td className="border border-gray-700 px-4 py-2">
-              DHT11 (Temperature Sensor)
-            </td>
-            <td className="border border-gray-700 px-4 py-2">GPIO 26</td>
-            <td className="border border-gray-700 px-4 py-2">
-              Measures temperature
-            </td>
-          </tr>
-          <tr className="bg-gray-800">
-            <td className="border border-gray-700 px-4 py-2">Start Button</td>
-            <td className="border border-gray-700 px-4 py-2">GPIO 27</td>
-            <td className="border border-gray-700 px-4 py-2">
-              Activates engine if safe
-            </td>
-          </tr>
-          <tr className="bg-gray-900">
-            <td className="border border-gray-700 px-4 py-2">
-              Relay (Engine Control)
-            </td>
-            <td className="border border-gray-700 px-4 py-2">GPIO 25</td>
-            <td className="border border-gray-700 px-4 py-2">
-              Controls vehicle engine
-            </td>
-          </tr>
-          <tr className="bg-gray-800">
-            <td className="border border-gray-700 px-4 py-2">Buzzer</td>
-            <td className="border border-gray-700 px-4 py-2">GPIO 23</td>
-            <td className="border border-gray-700 px-4 py-2">
-              Alerts for warnings
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="overflow-x-auto rounded-xl border border-gray-800 shadow-lg mb-8">
+        <table className="w-full">
+          <thead className="bg-gray-800">
+            <tr>
+              <th className="px-6 py-3 text-left text-sm font-semibold text-green-400 uppercase tracking-wider">
+                Component
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-semibold text-green-400 uppercase tracking-wider">
+                ESP32 Pin
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-semibold text-green-400 uppercase tracking-wider">
+                Description
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-800">
+            {[
+              {
+                component: "MQ3 (Alcohol Sensor)",
+                pin: "GPIO 34",
+                description: "Detects alcohol levels",
+              },
+              {
+                component: "MQ2 (Gas Sensor)",
+                pin: "GPIO 35",
+                description: "Detects gas leaks",
+              },
+              {
+                component: "Flame Sensor",
+                pin: "GPIO 32",
+                description: "Detects fire outbreaks",
+              },
+              {
+                component: "DHT11 (Temperature Sensor)",
+                pin: "GPIO 26",
+                description: "Measures temperature",
+              },
+              {
+                component: "Start Button",
+                pin: "GPIO 27",
+                description: "Activates engine if safe",
+              },
+              {
+                component: "Relay (Engine Control)",
+                pin: "GPIO 25",
+                description: "Controls vehicle engine",
+              },
+              {
+                component: "Buzzer",
+                pin: "GPIO 23",
+                description: "Alerts for warnings",
+              },
+            ].map((item, i) => (
+              <motion.tr
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={tableRowVariants}
+                className={`${
+                  i % 2 === 0 ? "bg-gray-800/50" : "bg-gray-900/50"
+                } hover:bg-gray-800 transition-colors`}
+              >
+                <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-200">
+                  {item.component}
+                </td>
+                <td className="px-6 py-4 text-gray-300">{item.pin}</td>
+                <td className="px-6 py-4 text-gray-300">{item.description}</td>
+              </motion.tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <h2 className="text-2xl font-semibold mt-6 text-blue-400">
-        ⚡ Circuit Overview:
-      </h2>
-      <p className="mb-4 text-gray-300">
-        The ESP32 microcontroller integrates with multiple sensors to constantly
-        monitor vehicle conditions. If a hazard is detected (alcohol, fire, gas
-        leak), the system triggers preventive actions.
-      </p>
-      <ul className="list-disc ml-6 text-gray-300">
-        <li>
-          🍺 **Alcohol Sensor (MQ3):** Disables engine if alcohol is detected.
-        </li>
-        <li>⚠ **Gas Sensor (MQ2):** Alerts users about gas leaks.</li>
-        <li>🔥 **Flame Sensor:** Detects fire outbreaks.</li>
-        <li>🌡 **Temperature Sensor (DHT11):** Monitors for overheating.</li>
-        <li>🛑 **Relay Module:** Prevents engine ignition when unsafe.</li>
-        <li>🔊 **Buzzer:** Sounds alarm on hazard detection.</li>
-      </ul>
+      <motion.div variants={fadeIn}>
+        <h2 className="text-2xl font-semibold mb-4 flex items-center text-blue-400 border-b border-blue-800 pb-2">
+          <span className="mr-2">⚡</span> Circuit Overview
+        </h2>
+        <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+          The ESP32 microcontroller integrates with multiple sensors to
+          constantly monitor vehicle conditions. If a hazard is detected
+          (alcohol, fire, gas leak), the system triggers preventive actions.
+        </p>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          {[
+            "🍺 **Alcohol Sensor (MQ3):** Disables engine if alcohol is detected.",
+            "⚠ **Gas Sensor (MQ2):** Alerts users about gas leaks.",
+            "🔥 **Flame Sensor:** Detects fire outbreaks.",
+            "🌡 **Temperature Sensor (DHT11):** Monitors for overheating.",
+            "🛑 **Relay Module:** Prevents engine ignition when unsafe.",
+            "🔊 **Buzzer:** Sounds alarm on hazard detection.",
+          ].map((item, i) => (
+            <motion.li
+              key={i}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={tableRowVariants}
+              className="flex items-start bg-gray-800/50 p-4 rounded-lg border-l-4 border-blue-500 hover:bg-gray-800 transition-colors"
+            >
+              <span className="text-gray-300">
+                {item.split("**").map((part, j) =>
+                  j % 2 === 1 ? (
+                    <strong key={j} className="text-cyan-400">
+                      {part}
+                    </strong>
+                  ) : (
+                    part
+                  )
+                )}
+              </span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
 
-      <h2 className="text-2xl font-semibold mt-6 text-blue-400">
-        📡 Communication:
-      </h2>
-      <ul className="list-disc ml-6 text-gray-300">
-        <li>📶 **ESP32 WiFi Module:** Transmits sensor data.</li>
-        <li>☁ **ThingSpeak Cloud:** Stores and visualizes data.</li>
-        <li>📩 **Telegram & Email Alerts:** Notifies users instantly.</li>
-      </ul>
-    </div>
+      <motion.div variants={fadeIn}>
+        <h2 className="text-2xl font-semibold mb-4 flex items-center text-blue-400 border-b border-blue-800 pb-2">
+          <span className="mr-2">📡</span> Communication
+        </h2>
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            "📶 **ESP32 WiFi Module:** Transmits sensor data.",
+            "☁ **ThingSpeak Cloud:** Stores and visualizes data.",
+            "📩 **Telegram & Email Alerts:** Notifies users instantly.",
+          ].map((item, i) => (
+            <motion.li
+              key={i}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={tableRowVariants}
+              className="flex items-start bg-gray-800/50 p-4 rounded-lg border-l-4 border-purple-500 hover:bg-gray-800 transition-colors"
+            >
+              <span className="text-gray-300">
+                {item.split("**").map((part, j) =>
+                  j % 2 === 1 ? (
+                    <strong key={j} className="text-cyan-400">
+                      {part}
+                    </strong>
+                  ) : (
+                    part
+                  )
+                )}
+              </span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+    </motion.div>
   );
 };
 

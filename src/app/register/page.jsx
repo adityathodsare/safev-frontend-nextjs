@@ -34,19 +34,19 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex flex-col  items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black px-4">
+      <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 mb-6 animate-pulse">
         Register
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="w-80 flex flex-col space-y-4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
+        className="w-full max-w-md flex flex-col space-y-5 bg-zinc-900 p-8 rounded-2xl shadow-2xl border border-violet-500/20"
       >
         <input
           type="text"
           name="name"
-          placeholder="Name"
-          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          placeholder="Full Name"
+          className="px-4 py-3 rounded-lg bg-zinc-800 text-white border border-pink-500/30 focus:outline-none focus:ring-2 focus:ring-pink-500"
           onChange={handleChange}
           required
         />
@@ -54,7 +54,7 @@ export default function RegisterPage() {
           type="email"
           name="username"
           placeholder="Email"
-          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="px-4 py-3 rounded-lg bg-zinc-800 text-white border border-violet-500/30 focus:outline-none focus:ring-2 focus:ring-violet-500"
           onChange={handleChange}
           required
         />
@@ -62,7 +62,7 @@ export default function RegisterPage() {
           type="password"
           name="password"
           placeholder="Password"
-          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="px-4 py-3 rounded-lg bg-zinc-800 text-white border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={handleChange}
           required
         />
@@ -70,7 +70,7 @@ export default function RegisterPage() {
           type="text"
           name="address"
           placeholder="Address"
-          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="px-4 py-3 rounded-lg bg-zinc-800 text-white border border-pink-500/30 focus:outline-none focus:ring-2 focus:ring-pink-500"
           onChange={handleChange}
           required
         />
@@ -78,19 +78,19 @@ export default function RegisterPage() {
           type="text"
           name="phoneNumber"
           placeholder="Phone Number"
-          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="px-4 py-3 rounded-lg bg-zinc-800 text-white border border-violet-500/30 focus:outline-none focus:ring-2 focus:ring-violet-500"
           onChange={handleChange}
           required
         />
         <button
           type="submit"
-          className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+          className="w-full py-3 rounded-lg bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 text-white font-bold shadow-lg hover:opacity-90 transition duration-300"
         >
           Register
         </button>
       </form>
       <button
-        className="mt-4 text-blue-600 dark:text-blue-400 hover:underline"
+        className="mt-5 text-sm text-blue-400 hover:underline"
         onClick={() => router.push("/login")}
       >
         Already Registered? Login
