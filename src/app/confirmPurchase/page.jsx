@@ -34,27 +34,29 @@ export default function ConfirmPurchasePage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 px-4">
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black px-4">
+      <div className="w-full max-w-md bg-zinc-900 border border-violet-500/30 shadow-2xl rounded-2xl p-8">
+        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 text-center mb-6 animate-pulse">
           Confirm Your Purchase
         </h2>
-        <p className="text-gray-700 dark:text-gray-300 text-center mb-6">
+        <p className="text-sm text-zinc-300 text-center mb-6">
           Please review the details before proceeding. Once you confirm, you
           will receive an email confirmation.
         </p>
 
         {message ? (
-          <p className="text-green-600 dark:text-green-400 text-center font-semibold">
+          <p className="text-center text-green-400 font-semibold mb-4">
             {message}
           </p>
         ) : (
           <button
             onClick={handleConfirm}
             disabled={isProcessing}
-            className={`w-full px-6 py-3 ${
-              isProcessing ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
-            } text-white font-semibold rounded-lg transition duration-300 shadow-md`}
+            className={`w-full px-6 py-3 rounded-lg text-white font-bold transition duration-300 shadow-lg ${
+              isProcessing
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 hover:opacity-90"
+            }`}
           >
             {isProcessing ? "Processing..." : "Confirm Purchase"}
           </button>
