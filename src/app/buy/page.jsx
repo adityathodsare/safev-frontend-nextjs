@@ -7,9 +7,9 @@ export default function BuyPage() {
     typeof window !== "undefined" ? localStorage.getItem("jwtToken") : null;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-center p-4">
-      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 w-80 md:w-96">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4">
+      <div className="bg-zinc-900 border border-pink-500/50 shadow-xl rounded-3xl p-8 w-full max-w-md">
+        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-violet-500 to-blue-500 mb-4 animate-glow">
           Welcome to SafeV
         </h1>
         <div className="border-t border-gray-300 dark:border-gray-700 pt-4">
@@ -35,14 +35,14 @@ export default function BuyPage() {
         <div className="mt-6">
           {!token ? (
             <button
-              className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition"
+              className="w-full px-4 py-2 bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 text-white font-semibold rounded-md hover:opacity-80 transition transform hover:scale-105 shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50"
               onClick={() => router.push("/register")}
             >
               Buy Now
             </button>
           ) : (
             <button
-              className="w-full px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition"
+              className="w-full px-4 py-2 bg-gradient-to-r from-green-400 via-blue-400 to-pink-500 text-white font-semibold rounded-md hover:opacity-80 transition transform hover:scale-105 shadow-xl focus:outline-none focus:ring-2 focus:ring-green-400/50"
               onClick={() => router.push("/confirmPurchase")}
             >
               Proceed to Purchase
