@@ -48,7 +48,7 @@ const AlcoholDetection = () => {
         });
 
         // 🔴 Send alert if Alcohol > 1400 ppm
-        if (latest.alcoholLevel > 1700) {
+        if (latest.alcoholLevel > 2000) {
           sendAlertalcohol(
             "Alcohol Alert",
             "High alcohol level detected in vehicle!"
