@@ -31,7 +31,7 @@ export function TeamMates() {
   return (
     <div className="w-full px-4">
       <div className=" text-gray-100  text-4xl font-extrabold text-center  mt-10 mb-6">
-        Team Sigma
+        Team NexaGen
       </div>
       <div className="flex flex-row items-center justify-center mb-10 w-full">
         <AnimatedTooltip items={people} />

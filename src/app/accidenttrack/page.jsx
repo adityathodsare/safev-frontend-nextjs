@@ -75,7 +75,7 @@ const Home = () => {
       const latest = data[data.length - 1]; // Store the latest data correctly
       setLatestData(latest);
 
-      if (latest && latest.gasLevel > 1000) {
+      if (latest && latest.gasLevel > 2300) {
         sendAlertgas("Gas Alert", "High gas level detected in vehicle!");
       }
     } catch (error) {
@@ -107,7 +107,7 @@ const Home = () => {
               color: "text-pink-400",
             },
             {
-              name: "Gas leak > 1000 (unsafe)",
+              name: "Gas leak > 1200 (unsafe)",
               value: latestData.gasLevel,
               unit: "(0-4095)",
               icon: FaGasPump,

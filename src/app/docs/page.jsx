@@ -140,7 +140,7 @@ function Page() {
         >
           <p className="text-gray-400 text-center text-lg mt-8">
             Made with ❤️ by{" "}
-            <span className="font-semibold text-green-400">teamSigma</span> |{" "}
+            <span className="font-semibold text-green-400">teamNexaGen</span> |{" "}
             <span className="text-gray-500">{new Date().getFullYear()}</span>
           </p>
         </motion.div>
