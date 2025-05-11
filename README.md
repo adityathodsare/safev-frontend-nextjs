@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+import javax.swing.*; // Importing Swing components like JFrame, JButton, JTextField, etc.
+import java.io.*; // For FileWriter and IOException
 
-## Getting Started
+// Main class extending JFrame for GUI
+class Fee2 extends JFrame {
 
-First, run the development server:
+    // Declaring input fields
+    JTextField t1 = new JTextField(); // Student Name
+    JTextField t2 = new JTextField(); // Roll No
+    JTextField t3 = new JTextField(); // Contact No
+    JTextField t4 = new JTextField(); // Pin Code
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    // Text areas for Address and Receipt display
+    JTextArea area1 = new JTextArea(); // Address
+    JTextArea area2 = new JTextArea(); // Receipt display
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    // Gender radio buttons
+    JRadioButton rb1 = new JRadioButton("Male");
+    JRadioButton rb2 = new JRadioButton("Female");
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    // Dropdowns (ComboBoxes) for Institute and Years
+    JComboBox<String> cb1 = new JComboBox<>(new String[]{"ICOER", "BSIOTR"}); // Institute
+    JComboBox<String> cb2 = new JComboBox<>(new String[]{"2020", "2021", "2022", "2023", "2024"}); // 10th Year
+    JComboBox<String> cb3 = new JComboBox<>(new String[]{"2020", "2021", "2022", "2023", "2024"}); // 12th Year
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    // Hostel options list
+    JList<String> list2 = new JList<>(new String[]{
+            "AC Room - 30000",
+            "Non-AC Room - 20000",
+            "Shared Room - 15000"
+    });
 
-## Learn More
+    // Grouping radio buttons to ensure only one selection
+    ButtonGroup genderGroup = new ButtonGroup();
 
-To learn more about Next.js, take a look at the following resources:
+    // Constructor to set up the GUI
+    public Fee2() {
+        setTitle("Fee Details Form"); // Frame title
+        setSize(900, 900); // Window size
+        setLayout(null); // Absolute positioning
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Close operation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+        // Form labels
+        String[] labels = {
+                "Student Name:", "Roll No:", "Gender:", "Institute:",
+                "10th Year:", "12th Year:", "Hostel:",
+                "Contact No:", "Address:", "Pin Code:"
+        };
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+        // Dynamically placing labels
+        int y = 50;
+        for (String text : labels) {
+            JLabel l = new JLabel(text);
+            l.setBounds(50, y, 150, 30);
+            add(l);
+            y += 50;
+        }
 
-## Deploy on Vercel
+        // Positioning input components
+        t1.setBounds(180, 50, 200, 30); add(t1);
+        t2.setBounds(180, 100, 200, 30); add(t2);
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+        // Radio buttons for Gender
+        rb1.setBounds(180, 150, 80, 30);
+        rb2.setBounds(270, 150, 80, 30);
+        genderGroup.add(rb1); genderGroup.add(rb2); // Grouping
+        add(rb1); add(rb2);
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+        // ComboBoxes for institute and years
+        cb1.setBounds(180, 200, 200, 30); add(cb1);
+        cb2.setBounds(210, 250, 100, 30); add(cb2);
+        cb3.setBounds(210, 300, 100, 30); add(cb3);
+
+        // Hostel selection list
+        list2.setBounds(180, 350, 150, 60); add(list2);
+
+        // Contact No., Address, Pin Code
+        t3.setBounds(180, 420, 200, 30); add(t3);
+        area1.setBounds(180, 470, 200, 60); add(area1);
+        t4.setBounds(180, 550, 200, 30); add(t4);
+
+        // Buttons for Print, Generate Receipt, and Reset
+        JButton print = new JButton("Print");
+        JButton receipt = new JButton("Generate Receipt");
+        JButton reset = new JButton("Reset");
+
+        print.setBounds(50, 600, 100, 30);
+        receipt.setBounds(160, 600, 150, 30);
+        reset.setBounds(320, 600, 100, 30);
+
+        add(print); add(receipt); add(reset);
+
+        // TextArea for displaying receipt output
+        area2.setBounds(600, 230, 250, 180);
+        add(area2);
+
+        // Adding logo image (ensure correct path)
+        JLabel logoLabel = new JLabel(new ImageIcon("C:\\Users\\Public\\Images\\a.png"));
+        logoLabel.setBounds(650, 10, 150, 150);
+        add(logoLabel);
+
+        // Print button action: prints area2 content
+        print.addActionListener(e -> {
+            try {
+                if (!area2.print()) {
+                    JOptionPane.showMessageDialog(null, "No printer found!");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Printing error: " + ex.getMessage());
+            }
+        });
+
+        // Generate Receipt button action
+        receipt.addActionListener(e -> {
+            // Building receipt string
+            String r = "Student Name: " + t1.getText() +
+                    "\nRoll No: " + t2.getText() +
+                    "\nHostel: " + list2.getSelectedValue();
+            area2.setText(r); // Displaying in area2
+
+            // File chooser to save receipt
+            JFileChooser fc = new JFileChooser();
+            fc.setDialogTitle("Save Receipt");
+            if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                try (FileWriter w = new FileWriter(fc.getSelectedFile())) {
+                    w.write(r);
+                    JOptionPane.showMessageDialog(null, "Receipt saved!");
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                }
+            }
+        });
+
+        // Reset button action: clears all fields and resets selections
+        reset.addActionListener(e -> {
+            t1.setText(""); t2.setText(""); t3.setText(""); t4.setText("");
+            area1.setText(""); area2.setText("");
+            genderGroup.clearSelection();
+            cb1.setSelectedIndex(0);
+            cb2.setSelectedIndex(0);
+            cb3.setSelectedIndex(0);
+            list2.clearSelection();
+        });
+
+        // Making frame visible
+        setVisible(true);
+    }
+
+    // Main method to run the application
+    public static void main(String[] args) {
+        new Fee2();
+    }
+}
+
