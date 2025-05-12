@@ -8,6 +8,16 @@ public class StudentResult {
         frame.setSize(300, 300);
         frame.setLayout(null);
 
+        import javax.swing.*;
+import java.awt.event.*;
+
+public class StudentResult {
+    public static void main(String[] args) {
+        // Main Frame
+        JFrame frame = new JFrame("Student Marks Entry");
+        frame.setSize(300, 300);
+        frame.setLayout(null);
+
         // Labels and TextFields for 3 subjects
         JLabel l1 = new JLabel("Subject 1:");
         l1.setBounds(20, 30, 80, 20);
