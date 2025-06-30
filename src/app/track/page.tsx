@@ -180,13 +180,14 @@ export default function MaharashtraGPSTracker() {
     setError("");
   };
 
+  // Responsive and dark mode styles (always dark)
   const buttonStyle = {
     padding: "10px 20px",
     borderRadius: "6px",
     border: "none",
     cursor: "pointer",
-    fontSize: "14px",
-    fontWeight: "500",
+    fontSize: "1rem",
+    fontWeight: 500,
     display: "inline-flex",
     alignItems: "center",
     gap: "8px",
@@ -195,28 +196,28 @@ export default function MaharashtraGPSTracker() {
 
   const primaryButtonStyle = {
     ...buttonStyle,
-    backgroundColor: "#3b82f6",
+    backgroundColor: "#2563eb",
     color: "white",
   };
 
   const dangerButtonStyle = {
     ...buttonStyle,
-    backgroundColor: "#ef4444",
+    backgroundColor: "#b91c1c",
     color: "white",
   };
 
   const outlineButtonStyle = {
     ...buttonStyle,
     backgroundColor: "transparent",
-    color: "#374151",
-    border: "1px solid #d1d5db",
+    color: "#d1d5db",
+    border: "1px solid #374151",
   };
 
   const cardStyle = {
-    backgroundColor: "white",
+    backgroundColor: "#18181b",
     borderRadius: "8px",
-    border: "1px solid #e5e7eb",
-    boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+    border: "1px solid #27272a",
+    boxShadow: "0 1px 3px 0 rgba(0,0,0,0.5)",
     overflow: "hidden",
   };
 
@@ -234,57 +235,100 @@ export default function MaharashtraGPSTracker() {
     alignItems: "center",
     borderRadius: "9999px",
     fontSize: "12px",
-    fontWeight: "500",
+    fontWeight: 500,
     padding: "4px 10px",
   };
 
   const successBadgeStyle = {
     ...badgeStyle,
-    backgroundColor: "#dcfce7",
-    color: "#166534",
+    backgroundColor: "#14532d",
+    color: "#bbf7d0",
   };
 
   const secondaryBadgeStyle = {
     ...badgeStyle,
-    backgroundColor: "#f3f4f6",
-    color: "#374151",
+    backgroundColor: "#27272a",
+    color: "#d1d5db",
   };
 
+  // Responsive container style with top padding for navbar (navbar is fixed at top-10)
+  const containerStyle = {
+    minHeight: "100vh",
+    backgroundColor: "#09090b",
+    padding: "16px",
+    paddingTop: "100px", // enough for navbar + gap
+    transition: "background 0.3s",
+  };
+
+  // Responsive max width
+  const mainStyle = {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    width: "100%",
+  };
+
+  // Responsive map style
+  const mapStyle = {
+    width: "100%",
+    height: "50vw",
+    maxHeight: "500px",
+    minHeight: "300px",
+    borderRadius: "8px",
+    border: "1px solid #27272a",
+    background: "#18181b",
+  };
+
+  // Responsive grid for location info
+  const infoGridStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+    gap: "16px",
+  };
+
+  // Responsive font sizes
+  const headerFontSize = "clamp(1.5rem, 4vw, 2.2rem)";
+  const subHeaderFontSize = "clamp(1.1rem, 2.5vw, 1.3rem)";
+
+  // Media queries for mobile
+  const mediaQueryStyle = `
+    @media (max-width: 600px) {
+      .card-content, .card-header { padding: 12px !important; }
+      .map-div { min-height: 200px !important; }
+      .info-grid { grid-template-columns: 1fr !important; }
+    }
+  `;
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#f9fafb",
-        padding: "16px",
-      }}
-    >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+    <div style={containerStyle}>
+      <style>{mediaQueryStyle}</style>
+      <div style={mainStyle}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "24px" }}>
           <h1
             style={{
-              fontSize: "30px",
+              fontSize: headerFontSize,
               fontWeight: "bold",
               margin: "0 0 8px 0",
-              color: "#111827",
+              color: "#fafafa",
+              transition: "color 0.3s",
             }}
           >
             Maharashtra GPS Tracker
           </h1>
-          <p style={{ color: "#6b7280", margin: "0" }}>
+          <p style={{ color: "#d1d5db", margin: 0 }}>
             Track your location within Maharashtra state boundaries
           </p>
         </div>
 
         {/* Controls Card */}
         <div style={{ ...cardStyle, marginBottom: "24px" }}>
-          <div style={cardHeaderStyle}>
+          <div className="card-header" style={cardHeaderStyle}>
             <h2
               style={{
-                fontSize: "18px",
-                fontWeight: "600",
-                margin: "0",
-                color: "#111827",
+                fontSize: subHeaderFontSize,
+                fontWeight: 600,
+                margin: 0,
+                color: "#fafafa",
                 display: "flex",
                 alignItems: "center",
                 gap: "8px",
@@ -293,7 +337,7 @@ export default function MaharashtraGPSTracker() {
               📍 GPS Controls
             </h2>
           </div>
-          <div style={cardContentStyle}>
+          <div className="card-content" style={cardContentStyle}>
             <div
               style={{
                 display: "flex",
@@ -308,11 +352,11 @@ export default function MaharashtraGPSTracker() {
                   style={primaryButtonStyle}
                   onMouseOver={(e) =>
                     ((e.target as HTMLElement).style.backgroundColor =
-                      "#2563eb")
+                      "#1d4ed8")
                   }
                   onMouseOut={(e) =>
                     ((e.target as HTMLElement).style.backgroundColor =
-                      "#3b82f6")
+                      "#2563eb")
                   }
                 >
                   📍 Start Tracking
@@ -323,11 +367,11 @@ export default function MaharashtraGPSTracker() {
                   style={dangerButtonStyle}
                   onMouseOver={(e) =>
                     ((e.target as HTMLElement).style.backgroundColor =
-                      "#dc2626")
+                      "#991b1b")
                   }
                   onMouseOut={(e) =>
                     ((e.target as HTMLElement).style.backgroundColor =
-                      "#ef4444")
+                      "#b91c1c")
                   }
                 >
                   ⏹️ Stop Tracking
@@ -337,7 +381,7 @@ export default function MaharashtraGPSTracker() {
                 onClick={resetMap}
                 style={outlineButtonStyle}
                 onMouseOver={(e) =>
-                  ((e.target as HTMLElement).style.backgroundColor = "#f9fafb")
+                  ((e.target as HTMLElement).style.backgroundColor = "#18181b")
                 }
                 onMouseOut={(e) =>
                   ((e.target as HTMLElement).style.backgroundColor =
@@ -352,40 +396,32 @@ export default function MaharashtraGPSTracker() {
               <div
                 style={{
                   padding: "12px",
-                  backgroundColor: "#fef2f2",
-                  border: "1px solid #fecaca",
+                  backgroundColor: "#7f1d1d",
+                  border: "1px solid #991b1b",
                   borderRadius: "6px",
                   marginBottom: "16px",
                 }}
               >
-                <p style={{ color: "#dc2626", fontSize: "14px", margin: "0" }}>
+                <p style={{ color: "#fecaca", fontSize: "14px", margin: 0 }}>
                   {error}
                 </p>
               </div>
             )}
 
             {location && (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                  gap: "16px",
-                }}
-              >
+              <div className="info-grid" style={infoGridStyle}>
                 <div>
                   <p
                     style={{
                       fontSize: "14px",
-                      fontWeight: "500",
+                      fontWeight: 500,
                       margin: "0 0 4px 0",
-                      color: "#111827",
+                      color: "#fafafa",
                     }}
                   >
                     Latitude
                   </p>
-                  <p
-                    style={{ fontSize: "14px", color: "#6b7280", margin: "0" }}
-                  >
+                  <p style={{ fontSize: "14px", color: "#d1d5db", margin: 0 }}>
                     {location.latitude.toFixed(6)}
                   </p>
                 </div>
@@ -393,16 +429,14 @@ export default function MaharashtraGPSTracker() {
                   <p
                     style={{
                       fontSize: "14px",
-                      fontWeight: "500",
+                      fontWeight: 500,
                       margin: "0 0 4px 0",
-                      color: "#111827",
+                      color: "#fafafa",
                     }}
                   >
                     Longitude
                   </p>
-                  <p
-                    style={{ fontSize: "14px", color: "#6b7280", margin: "0" }}
-                  >
+                  <p style={{ fontSize: "14px", color: "#d1d5db", margin: 0 }}>
                     {location.longitude.toFixed(6)}
                   </p>
                 </div>
@@ -410,16 +444,14 @@ export default function MaharashtraGPSTracker() {
                   <p
                     style={{
                       fontSize: "14px",
-                      fontWeight: "500",
+                      fontWeight: 500,
                       margin: "0 0 4px 0",
-                      color: "#111827",
+                      color: "#fafafa",
                     }}
                   >
                     Accuracy
                   </p>
-                  <p
-                    style={{ fontSize: "14px", color: "#6b7280", margin: "0" }}
-                  >
+                  <p style={{ fontSize: "14px", color: "#d1d5db", margin: 0 }}>
                     {location.accuracy.toFixed(0)}m
                   </p>
                 </div>
@@ -427,9 +459,9 @@ export default function MaharashtraGPSTracker() {
                   <p
                     style={{
                       fontSize: "14px",
-                      fontWeight: "500",
+                      fontWeight: 500,
                       margin: "0 0 4px 0",
-                      color: "#111827",
+                      color: "#fafafa",
                     }}
                   >
                     Status
@@ -453,29 +485,21 @@ export default function MaharashtraGPSTracker() {
 
         {/* Map Card */}
         <div style={{ ...cardStyle, marginBottom: "24px" }}>
-          <div style={cardHeaderStyle}>
+          <div className="card-header" style={cardHeaderStyle}>
             <h2
               style={{
-                fontSize: "18px",
-                fontWeight: "600",
-                margin: "0",
-                color: "#111827",
+                fontSize: subHeaderFontSize,
+                fontWeight: 600,
+                margin: 0,
+                color: "#fafafa",
               }}
             >
               🗺️ Map View
             </h2>
           </div>
-          <div style={cardContentStyle}>
+          <div className="card-content" style={cardContentStyle}>
             <div style={{ position: "relative" }}>
-              <div
-                ref={mapRef}
-                style={{
-                  width: "100%",
-                  height: "500px",
-                  borderRadius: "8px",
-                  border: "1px solid #e5e7eb",
-                }}
-              />
+              <div ref={mapRef} className="map-div" style={mapStyle} />
               {!mapLoaded && (
                 <div
                   style={{
@@ -483,7 +507,7 @@ export default function MaharashtraGPSTracker() {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    color: "#6b7280",
+                    color: "#d1d5db",
                     fontSize: "16px",
                   }}
                 >
@@ -496,26 +520,26 @@ export default function MaharashtraGPSTracker() {
 
         {/* Instructions Card */}
         <div style={cardStyle}>
-          <div style={cardHeaderStyle}>
+          <div className="card-header" style={cardHeaderStyle}>
             <h2
               style={{
-                fontSize: "18px",
-                fontWeight: "600",
-                margin: "0",
-                color: "#111827",
+                fontSize: subHeaderFontSize,
+                fontWeight: 600,
+                margin: 0,
+                color: "#fafafa",
               }}
             >
               📋 How to Use
             </h2>
           </div>
-          <div style={cardContentStyle}>
+          <div className="card-content" style={cardContentStyle}>
             <ol
               style={{
                 paddingLeft: "20px",
-                margin: "0",
-                color: "#374151",
+                margin: 0,
+                color: "#d1d5db",
                 fontSize: "14px",
-                lineHeight: "1.6",
+                lineHeight: 1.6,
               }}
             >
               <li style={{ marginBottom: "8px" }}>
