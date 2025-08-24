@@ -1,13 +1,15 @@
 "use client"; // This ensures React hooks work in Next.js
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
+import { useNavigation } from "./NavigationContext";
 
 const AuthContext = createContext(); // Ensure this is correctly created
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const router = useRouter();
+  const { navigateWithLoader } = useNavigation();
 
   // Check for token in localStorage on mount
   useEffect(() => {
@@ -29,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       const data = await res.text();
       setToken(data);
       localStorage.setItem("jwtToken", data);
-      router.push("/confirmPurchase");
+      navigateWithLoader(router, "/confirmPurchase");
     } else {
       alert("Invalid Credentials");
     }
@@ -39,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setToken(null);
     localStorage.removeItem("jwtToken");
-    router.push("/login");
+    navigateWithLoader(router, "/login");
   };
 
   return (

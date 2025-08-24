@@ -2,17 +2,19 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
 
 export default function TrackingPage() {
   const [ucod, setUcod] = useState("");
   const router = useRouter();
+  const { navigateWithLoader } = useNavigation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (ucod.trim().toLowerCase() === "sigma001") {
-      router.push("/tracking/choose");
+      navigateWithLoader(router, "/tracking/choose");
     } else {
-      router.push("tracking/error");
+      navigateWithLoader(router, "tracking/error");
     }
   };
 

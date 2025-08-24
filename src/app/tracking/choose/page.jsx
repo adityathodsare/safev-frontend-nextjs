@@ -1,7 +1,16 @@
+"use client";
 import React from "react";
-import Link from "next/link";
+import { useNavigation } from "@/context/NavigationContext";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const { navigateWithLoader } = useNavigation();
+  const router = useRouter();
+
+  const handleNavigation = (path) => {
+    navigateWithLoader(router, path);
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4 font-mono">
       {/* Title with techy gradient */}
@@ -11,9 +20,9 @@ export default function Page() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-2xl">
         {/* Alcohol Tracking Button - Neon Blue */}
-        <Link
-          href="/alcoholtrack"
-          className="relative group overflow-hidden rounded-xl p-0.5 bg-gradient-to-br from-cyan-400 to-blue-600"
+        <button
+          onClick={() => handleNavigation("/alcoholtrack")}
+          className="relative group overflow-hidden rounded-xl p-0.5 bg-gradient-to-br from-cyan-400 to-blue-600 cursor-pointer"
         >
           <div className="relative bg-gray-900 p-8 rounded-xl group-hover:bg-gray-800 transition-all duration-300">
             <div className="flex flex-col items-center">
@@ -27,12 +36,12 @@ export default function Page() {
             </div>
             <div className="absolute inset-0 bg-cyan-400 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
           </div>
-        </Link>
+        </button>
 
         {/* Accident Tracking Button - Neon Pink */}
-        <Link
-          href="/accidenttrack"
-          className="relative group overflow-hidden rounded-xl p-0.5 bg-gradient-to-br from-pink-500 to-purple-600"
+        <button
+          onClick={() => handleNavigation("/accidenttrack")}
+          className="relative group overflow-hidden rounded-xl p-0.5 bg-gradient-to-br from-pink-500 to-purple-600 cursor-pointer"
         >
           <div className="relative bg-gray-900 p-8 rounded-xl group-hover:bg-gray-800 transition-all duration-300">
             <div className="flex flex-col items-center">
@@ -46,7 +55,7 @@ export default function Page() {
             </div>
             <div className="absolute inset-0 bg-pink-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
           </div>
-        </Link>
+        </button>
       </div>
 
       {/* Footer note */}

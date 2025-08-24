@@ -3,10 +3,12 @@
 import { useState, useContext } from "react";
 import { useRouter } from "next/navigation";
 import AuthContext from "../../context/AuthContext";
+import { useNavigation } from "@/context/NavigationContext";
 
 export default function LoginPage() {
   const router = useRouter();
   const { login } = useContext(AuthContext);
+  const { navigateWithLoader } = useNavigation();
   const [formData, setFormData] = useState({ username: "", password: "" });
 
   const handleChange = (e) => {
@@ -50,7 +52,7 @@ export default function LoginPage() {
         </form>
         <button
           className="mt-5 w-full text-center text-sm text-purple-400 hover:text-pink-400 hover:underline transition"
-          onClick={() => router.push("/register")}
+          onClick={() => navigateWithLoader(router, "/register")}
         >
           Not Registered? <span className="font-medium">Sign Up</span>
         </button>

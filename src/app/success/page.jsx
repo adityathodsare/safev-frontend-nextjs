@@ -1,9 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
 
 export default function SuccessPage() {
   const router = useRouter();
+  const { navigateWithLoader } = useNavigation();
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4">
@@ -24,7 +26,7 @@ export default function SuccessPage() {
           will contact you as soon as possible.
         </p>
         <button
-          onClick={() => router.push("/")}
+          onClick={() => navigateWithLoader(router, "/")}
           className="mt-4 w-full px-6 py-3 rounded-lg text-white font-bold bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 hover:opacity-90 transition duration-300 shadow-lg"
         >
           Back to Home

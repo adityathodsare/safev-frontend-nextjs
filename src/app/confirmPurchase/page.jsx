@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
 
 export default function ConfirmPurchasePage() {
   const router = useRouter();
+  const { navigateWithLoader } = useNavigation();
   const [message, setMessage] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -29,7 +31,7 @@ export default function ConfirmPurchasePage() {
     setIsProcessing(false);
 
     setTimeout(() => {
-      router.push("/success"); // Redirect to success page after confirmation
+      navigateWithLoader(router, "/success"); // Redirect to success page after confirmation
     }, 2000);
   };
 

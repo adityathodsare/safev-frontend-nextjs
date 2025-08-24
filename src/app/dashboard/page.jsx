@@ -2,14 +2,16 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
 
 export default function Dashboard() {
   const router = useRouter();
+  const { navigateWithLoader } = useNavigation();
 
   useEffect(() => {
     const token = localStorage.getItem("jwtToken");
     if (!token) {
-      router.push("/login");
+      navigateWithLoader(router, "/login");
     }
   }, []);
 

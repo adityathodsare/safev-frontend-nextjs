@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const { navigateWithLoader } = useNavigation();
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -27,7 +29,7 @@ export default function RegisterPage() {
 
     if (res.ok) {
       alert("Registration Successful! Please Login.");
-      router.push("/login");
+      navigateWithLoader(router, "/login");
     } else {
       alert("Registration Failed! Try again.");
     }
@@ -91,7 +93,7 @@ export default function RegisterPage() {
       </form>
       <button
         className="mt-5 text-sm text-blue-400 hover:underline"
-        onClick={() => router.push("/login")}
+        onClick={() => navigateWithLoader(router, "/login")}
       >
         Already Registered? Login
       </button>

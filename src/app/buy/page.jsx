@@ -1,8 +1,10 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useNavigation } from "@/context/NavigationContext";
 
 export default function BuyPage() {
   const router = useRouter();
+  const { navigateWithLoader } = useNavigation();
   const token =
     typeof window !== "undefined" ? localStorage.getItem("jwtToken") : null;
 
@@ -36,14 +38,14 @@ export default function BuyPage() {
           {!token ? (
             <button
               className="w-full px-4 py-2 bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 text-white font-semibold rounded-md hover:opacity-80 transition transform hover:scale-105 shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50"
-              onClick={() => router.push("/register")}
+              onClick={() => navigateWithLoader(router, "/register")}
             >
               Buy Now
             </button>
           ) : (
             <button
               className="w-full px-4 py-2 bg-gradient-to-r from-green-400 via-blue-400 to-pink-500 text-white font-semibold rounded-md hover:opacity-80 transition transform hover:scale-105 shadow-xl focus:outline-none focus:ring-2 focus:ring-green-400/50"
-              onClick={() => router.push("/confirmPurchase")}
+              onClick={() => navigateWithLoader(router, "/confirmPurchase")}
             >
               Proceed to Purchase
             </button>

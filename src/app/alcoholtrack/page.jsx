@@ -197,7 +197,7 @@ const AlcoholDetection = () => {
               contentStyle={{ backgroundColor: "#222", border: "none" }}
               formatter={(value, name) => {
                 if (name === "temperature") {
-                  return [(value / 10).toFixed(2) + " °C", name];
+                  return [`${value}°C`, "Temperature"];
                 }
                 return [value, name];
               }}
@@ -205,7 +205,6 @@ const AlcoholDetection = () => {
             <Line
               type="monotone"
               dataKey="alcoholLevel"
-              name="Alcohol Level"
               stroke="#00CED1"
               strokeWidth={2}
               dot={{ fill: "#00CED1" }}
@@ -213,7 +212,6 @@ const AlcoholDetection = () => {
             <Line
               type="monotone"
               dataKey="temperature"
-              name="Temperature (°C)"
               stroke="#8A2BE2"
               strokeWidth={2}
               dot={{ fill: "#8A2BE2" }}
@@ -221,7 +219,6 @@ const AlcoholDetection = () => {
             <Line
               type="monotone"
               dataKey="fireDetected"
-              name="Fire Detected"
               stroke="#FF4500"
               strokeWidth={2}
               dot={{ fill: "#FF4500" }}
@@ -229,15 +226,13 @@ const AlcoholDetection = () => {
             <Line
               type="monotone"
               dataKey="engineAllowed"
-              name="Engine Allowed"
-              stroke="#4169E1"
+              stroke="#4682B4"
               strokeWidth={2}
-              dot={{ fill: "#4169E1" }}
+              dot={{ fill: "#4682B4" }}
             />
             <Line
               type="monotone"
               dataKey="acPower"
-              name="AC Power"
               stroke="#FFD700"
               strokeWidth={2}
               dot={{ fill: "#FFD700" }}
