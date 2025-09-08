@@ -1,7 +1,7 @@
 "use client";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import Link from "next/link";
-import { FlipWords } from "../components/ui/flip-words";
+import { FlipWords } from "@/components/ui/flip-words";
 import { useRouter } from "next/navigation";
 import { useNavigation } from "@/context/NavigationContext";
 
@@ -12,7 +12,7 @@ function Background() {
 
   return (
     <div className="min-h-screen w-full relative overflow-hidden">
-      <BackgroundLines className="flex items-center justify-center w-full flex-col px-4 sm:px-6 lg:px-8">
+      <BackgroundLines className="flex items-center justify-center w-full flex-col px-4 sm:px-6 lg:px-8 min-h-screen">
         {/* Main Content Container */}
         <div className="flex flex-col items-center justify-center max-w-4xl mx-auto text-center space-y-8 sm:space-y-12">
           {/* Header Section */}
@@ -106,7 +106,9 @@ function Background() {
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span className="hidden sm:inline">Working On...</span>
+                  <span className="hidden sm:inline">
+                    Currently Working On...
+                  </span>
                   <span className="sm:hidden">In Progress</span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-red-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -115,7 +117,7 @@ function Background() {
           </div>
 
           {/* Optional: Add a subtle description */}
-          <p className="text-neutral-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed relative z-20">
+          <p className="text-neutral-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed relative z-20 px-4 sm:px-0">
             Advanced vehicle safety system with real-time monitoring and
             emergency response capabilities
           </p>
