@@ -106,9 +106,7 @@ function Background() {
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span className="hidden sm:inline">
-                    Currently Working On...
-                  </span>
+                  <span className="hidden sm:inline">Working On...</span>
                   <span className="sm:hidden">In Progress</span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-red-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
