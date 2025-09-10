@@ -201,9 +201,6 @@ function Navbar({ className }: { className?: string }) {
                     About Team
                   </HoveredLink>
                 </div>
-                <div onClick={() => handleNavigation("/docs")}>
-                  <HoveredLink href="/docs">INFO Docs</HoveredLink>
-                </div>
                 <div onClick={() => handleNavigation("/tracking")}>
                   <HoveredLink href="/tracking">Track Data</HoveredLink>
                 </div>
@@ -317,12 +314,7 @@ function Navbar({ className }: { className?: string }) {
                     >
                       About Team
                     </div>
-                    <div
-                      onClick={() => handleNavigation("/docs")}
-                      className="px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800 cursor-pointer transition-colors"
-                    >
-                      INFO Docs
-                    </div>
+
                     <div
                       onClick={() => handleNavigation("/tracking")}
                       className="px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800 cursor-pointer transition-colors"
